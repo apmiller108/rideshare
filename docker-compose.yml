@@ -20,7 +20,7 @@ services: # docker-compose up web database redis sidekiq
     env_file:
       - ".env"
   database:
-    image: postgres:latest
+    image: postgres:15.4
     restart: always
     volumes:
       - 'postgres:/var/lib/postgresql/data'
