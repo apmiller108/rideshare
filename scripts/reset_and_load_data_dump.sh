@@ -22,7 +22,7 @@ echo "Decompressed file is around 100 MB"
 du -h tmp/rideshare_database_dump.sql
 
 echo "Re-create the empty database"
-bin/rails db:drop:all
+bin/rails db:drop
 bin/rails db:create
 
 echo "Load the dump file using psql. \
@@ -30,6 +30,7 @@ This will take a minute..."
 psql --set ON_ERROR_STOP=on --quiet \
   --no-psqlrc \
   --output /dev/null \
+  -h database \
   rideshare_development \
   --file tmp/rideshare_database_dump.sql
 
